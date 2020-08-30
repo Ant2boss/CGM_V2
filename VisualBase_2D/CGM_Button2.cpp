@@ -21,6 +21,7 @@ void CGM::Button::SetButtonText(std::string str, int str_color) {
 }
 
 void CGM::Button::SetSize(CGM::Vector2i Size) {
+	if (Size == this->MyColider.Size) return;
 	this->MyColider.Size = Size;
 	this->MyTextBox.SetSize(Size);
 }
@@ -126,6 +127,25 @@ void CGM::Button_Matrix::SetButtonBaseColor(int Color) {
 void CGM::Button_Matrix::SetButtonSelectedColor(int Color) {
 	this->MyButtonSelectColor = Color;
 	this->MyArrayNeedsUpdating = true;
+}
+
+void CGM::Button_Matrix::SetButtonColor_Index(int ButtonIndex, int Color) {
+	this->SetButtonBaseColor_Index(ButtonIndex, Color);
+	this->SetButtonSelectedColor_Index(ButtonIndex, Color);
+}
+
+void CGM::Button_Matrix::SetButtonBaseColor_Index(int ButtonIndex, int Color) {
+#ifdef _DEBUG
+	if (ButtonIndex < 0 || ButtonIndex >= this->MyButtonArray.size()) DebugBreak();
+#endif
+	this->MyButtonArray[ButtonIndex].SetBaseColor(Color);
+}
+
+void CGM::Button_Matrix::SetButtonSelectedColor_Index(int ButtonIndex, int Color) {
+#ifdef _DEBUG
+	if (ButtonIndex < 0 || ButtonIndex >= this->MyButtonArray.size()) DebugBreak();
+#endif
+	this->MyButtonArray[ButtonIndex].SetSelectedColor(Color);
 }
 
 void CGM::Button_Matrix::SetMatrixOrigin(CGM::Vector2i Pos) {

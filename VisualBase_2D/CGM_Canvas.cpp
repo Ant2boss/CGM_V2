@@ -1,5 +1,7 @@
 #include "CGM_Canvas.h"
 
+#include <conio.h>
+
 int CGM::Canvas::indexOf(int x, int y) const{
     return y * this->Mysize.x + x;
 }
@@ -86,6 +88,22 @@ CGM::Vector2i CGM::Canvas::GetSize() const{
 
 CGM::Colider2i CGM::Canvas::GetColider() const{
     return CGM::Get_Colider2_FromPosAndSize(CGM::Vector2i(0, 0), this->Mysize);
+}
+
+void CGM::Canvas::Pause() {
+    while (_kbhit()) {
+        _getwch();
+    }
+    while (CGM::Check_Mouse_LeftClick()) {}
+
+    while (1) {
+        if (_kbhit()) {
+            _getwch();
+            break;
+        }
+        if (CGM::Check_Mouse_LeftClick()) break;
+    }
+
 }
 
 void CGM::Canvas::Clear(int Color) {

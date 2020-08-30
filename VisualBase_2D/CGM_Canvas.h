@@ -70,6 +70,8 @@ namespace CGM {
 		CGM::Vector2i GetSize() const;
 		CGM::Colider2i GetColider() const;
 
+		void Pause();
+
 		void Clear(int Color = CGM::Color::Black);
 
 		void Draw() const;

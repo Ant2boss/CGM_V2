@@ -88,6 +88,10 @@ namespace CGM {
 		void SetButtonBaseColor(int Color);
 		void SetButtonSelectedColor(int Color);
 
+		void SetButtonColor_Index(int ButtonIndex, int Color);
+		void SetButtonBaseColor_Index(int ButtonIndex, int Color);
+		void SetButtonSelectedColor_Index(int ButtonIndex, int Color);
+
 		void SetMatrixOrigin(CGM::Vector2i Pos);
 		void SetMatrixOrigin(int xPos, int yPos) { this->SetMatrixOrigin(CGM::Vector2i(xPos, yPos)); }
 
